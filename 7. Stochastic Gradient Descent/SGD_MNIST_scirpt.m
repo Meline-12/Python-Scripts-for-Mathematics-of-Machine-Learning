@@ -102,7 +102,5 @@ toc;
 % Berechnung der empirischen Risiken
 Fs_SGD = RS(exp_XY(ws_SGD));
 
-Fs_SGD
-
 semilogx(Fs_SGD,'--','LineWidth',2)
 %plot(Fs_SGD,'--','LineWidth',2)

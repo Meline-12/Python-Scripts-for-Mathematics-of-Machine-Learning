@@ -8,10 +8,10 @@ load('data_KSVM');
 
 % Daten zufällig anordnen
 m = length(y);
-permutation = randperm(m);
-
-y = y(permutation);
-x = x(:, permutation);
+% permutation = randperm(m);
+% 
+% y = y(permutation);
+% x = x(:, permutation);
 
 % Zeichnen der Trainingsdaten:
 figure(1)
@@ -66,9 +66,11 @@ for j = 1:length(kappas),
         % CV-Fehler aufdatieren für Verlust
         h_test = predict(KSVM, x_test');
         CV_error(j) = CV_error(j) + mean(y_test' ~= h_test);
+     
     end
     
     CV_error(j) = CV_error(j)/K;
+  
 end
 toc;
 
@@ -88,7 +90,6 @@ set(gca,'FontSize',16)
 [CV_max, j_max] = max(CV_error)
 kappa_best = kappas(j_min);
 kappa_worst = kappas(j_max);
-
 
 % Lernen aus ALLEN Trainingsdaten
 KSVM_best = fitcsvm(x',y, 'ClassNames',[-1,1],...
